@@ -10,16 +10,17 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { LockScreenPageModule } from './pages/lock-screen/lock-screen.module';
+import { NgIdleModule } from "@ng-idle/core";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LockScreenPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, LockScreenPageModule, NgIdleModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FingerprintAIO
+    FingerprintAIO,
   ],
   bootstrap: [AppComponent]
 })

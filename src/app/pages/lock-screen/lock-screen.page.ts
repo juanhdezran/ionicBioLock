@@ -28,7 +28,7 @@ export class LockScreenPage implements OnInit {
     }).then((result: any) => {
       this.modalCtrl.dismiss();
     }).catch((error: any) => {
-        this.verify();
+        //this.verify();
     });
   }
 
