@@ -13,6 +13,7 @@ import {Idle, DEFAULT_INTERRUPTSOURCES} from '@ng-idle/core';
 })
 export class AppComponent {
   modal: any;
+  modalDisplayed: boolean = false;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -27,9 +28,12 @@ export class AppComponent {
     this.idle.setIdle(5);
     this.idle.setTimeout(5);
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
-    this.idle.onTimeout.subscribe(() => { 
+    this.idle.onTimeout.subscribe(() => {
+      console.log('Idle Timeout ...'); 
       //verify if lock screen is not opened and if the biometric unlock is enabled
-      this.openModal();
+      if(!this.modalDisplayed){
+        this.openModal(); 
+      }      
     });
     this.idle.watch();    
     this.platform.ready().then(() => {
@@ -37,16 +41,22 @@ export class AppComponent {
       this.splashScreen.hide();
       this.platform.resume.subscribe(() => {
         this.openModal();
-      })      
+      });      
     });
   }
 
   async openModal(){
-      console.log('opening modal ...');
+      console.log('Opening modal ...');
       this.modal = await this.modalCtrl.create({
         component: LockScreenPage,          
       });
       await this.modal.present();
+      this.modalDisplayed = true;
+      this.modal.onDidDismiss().then(() => {
+        console.log('Modal dismiss ...');
+        this.modalDisplayed = false;
+        this.idle.watch();
+      });
         
   }
 }

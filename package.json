@@ -26,6 +26,8 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "@ng-idle/core": "^8.0.0-beta.4",
+    "@ng-idle/keepalive": "^8.0.0-beta.4",
+    "angular2-moment": "^1.9.0",
     "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-fingerprint-aio": "^2.0.0",

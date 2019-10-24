@@ -12,6 +12,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { LockScreenPageModule } from './pages/lock-screen/lock-screen.module';
 import { NgIdleModule } from "@ng-idle/core";
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

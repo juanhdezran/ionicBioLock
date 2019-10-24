@@ -32,4 +32,8 @@ export class LockScreenPage implements OnInit {
     });
   }
 
+  dismiss(): void{
+    this.modalCtrl.dismiss();
+  }
+
 }
